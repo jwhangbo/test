@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const _ = require('lodash');
 
 const port = process.env.PORT || 8080;
 var app = express();
@@ -20,7 +21,9 @@ hbs.registerHelper('message', (text) => {
 
 app.use((request, response, next) => {
 	response.render('maintenance.hbs', {
-		date: new Date().toString()
+		date: new Date().toString(),
+		name: 'Theo',
+		num: _.random(10)
 	})
 });
 
